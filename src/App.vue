@@ -1,11 +1,37 @@
 <template>
   <div id="app">
-    <h1>Todo app</h1>
-    <hr>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <router-link class="navbar-brand text-uppercase" to="/">My contact</router-link>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+            
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <router-link class="badge badge-light" :to="{ name: 'Contact', params: { index } }">Add Contact</router-link>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
     <router-view />
   </div>
 </template>
+
+<script>
+const index = -1
+export default {
+  data() {
+    return {
+      index: -1
+    }
+  }
+}
+</script>
 
 <style>
 #app {
@@ -14,6 +40,5 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>

@@ -1,15 +1,47 @@
 <template>
-    <div>
-        <h2>Home page</h2>
+    <div class="py-5">
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col-md-9">
+                    <div class="card">
+                        <div class="card-header mb-1">
+                            <strong>All Contacts</strong>
+                        </div>
 
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, est molestias et repellat consequuntur quaerat explicabo nemo sed deleniti ab error voluptate ratione qui voluptatibus veritatis tempore, ex commodi nulla?</p>
-
-        <router-link class="router" to="/todos">Todos</router-link>
+                        <ContactList
+                            v-if="contacts.length"
+                            v-bind:contacts="contacts"
+                            @remove-contact="removeContact"
+                        />
+                        <p
+                            v-else>Contactlist is empty!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
-<style scoped>
-    .router {
-        color: #000;
+<script>
+    import ContactList from '@/components/ContactList'
+    import data from '../assets/database'
+    export default {
+        data() {
+            return {
+                contacts: []
+            }
+        },
+        components: {
+            ContactList
+        },
+        mounted() {
+            this.contacts = data
+        },
+        methods: {
+            removeContact(id) {
+                this.contacts = this.contacts.filter(el => el.id !== id)
+            }
+        }
     }
-</style>
+</script>
