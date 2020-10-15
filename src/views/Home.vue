@@ -4,18 +4,16 @@
             <div class="row justify-content-md-center">
                 <div class="col-md-9">
                     <div class="card">
-                        <div class="card-header mb-1">
-                            <strong>All Contacts</strong>
+                        <div class="card-header mb-1 text-center">
+                            <strong>
+                                All Contacts
+                                <span class=" mx-1 badge badge-pill badge-dark">{{allContact.length}}</span>
+                            </strong>
                         </div>
-
-                        <ContactList
-                            v-if="contacts.length"
-                            v-bind:contacts="contacts"
-                            @remove-contact="removeContact"
-                        />
-                        <p
-                            v-else>Contactlist is empty!
-                        </p>
+                        <input v-if="allContact.length" class="form-control col-md-8 mx-auto mb-1" id="myInput"
+                            type="text" placeholder="Search..">
+                        <ContactList v-if="allContact.length" />
+                        <p class="text-center" v-else>Contactlist is empty!</p>
                     </div>
                 </div>
             </div>
@@ -24,24 +22,43 @@
 </template>
 
 <script>
-    import ContactList from '@/components/ContactList'
-    import data from '../assets/database'
-    export default {
-        data() {
-            return {
-                contacts: []
-            }
-        },
-        components: {
-            ContactList
-        },
-        mounted() {
-            this.contacts = data
-        },
-        methods: {
-            removeContact(id) {
-                this.contacts = this.contacts.filter(el => el.id !== id)
-            }
+import $ from 'jquery'
+import ContactList from '@/components/ContactList'
+import {mapGetters, mapMutations} from 'vuex'
+
+export default {
+    computed: mapGetters(['allContact']),
+    data() {
+        return {
+            contactList: []
         }
-    }
+    },
+    methods: {
+        ...mapMutations(['deleteContact']),
+        removeContact(id) {
+            this.deleteContact(id);
+        }
+    },
+    mounted() {
+        this.contactList = this.allContact;
+        console.log(this.contactList);
+        console.log(this.allContact);
+        $(document).ready(function () {
+            $("#myInput").on("keyup", function () {
+                const value = $(this).val().toLowerCase();
+                const regex = new RegExp(value, 'i');
+                console.log($("h4").text().toLocaleLowerCase().includes(value));
+                $("#sampleInput #liSearch").filter(function () {
+                    $(this).toggle(
+                        $(this).text().split(":")[0].toLocaleLowerCase().includes(value)
+                    )
+                });
+                
+            });
+        });
+    },
+    components: {
+        ContactList
+    },
+}
 </script>

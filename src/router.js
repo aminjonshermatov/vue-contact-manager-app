@@ -10,7 +10,9 @@ export default new Router({
     routes: [
         {
             path: '/',
-            component: Home
+            name: 'Home',
+            component: Home,
+            props: true
         },
         {
             path: '/addContact',

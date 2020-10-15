@@ -1,12 +1,11 @@
 <template>
     <div>
-        <ul>
+        <ul class="pl-0 mb-0" id="sampleInput">
             <ContactItem
-                v-for="(contact, i) of contacts"
+                v-for="(contact, i) of allContact"
                 :key="contact.id"
                 v-bind:contact="contact"
                 v-bind:index="i"
-                v-on:remove-contact="removeContact"
             />
         </ul>
     </div>
@@ -14,23 +13,9 @@
 
 <script>
 import ContactItem from '@/components/ContactItem'
+import {mapGetters} from 'vuex'
 export default {
-    props: ['contacts'],
-    components: {
-        ContactItem
-    },
-    methods: {
-        removeContact(id) {
-            this.$emit('remove-contact', id)
-        }
-    }
+    computed: mapGetters(['allContact']),
+    components: {ContactItem}
 }
 </script>
-
-<style scoped>
-    ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-    }
-</style>
