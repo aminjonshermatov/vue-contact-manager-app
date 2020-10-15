@@ -41,13 +41,10 @@ export default {
     },
     mounted() {
         this.contactList = this.allContact;
-        console.log(this.contactList);
-        console.log(this.allContact);
         $(document).ready(function () {
             $("#myInput").on("keyup", function () {
                 const value = $(this).val().toLowerCase();
                 const regex = new RegExp(value, 'i');
-                console.log($("h4").text().toLocaleLowerCase().includes(value));
                 $("#sampleInput #liSearch").filter(function () {
                     $(this).toggle(
                         $(this).text().split(":")[0].toLocaleLowerCase().includes(value)

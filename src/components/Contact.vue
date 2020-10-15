@@ -37,7 +37,7 @@
                                                 />
                                             </div>
                                             <div class="col-md-2 px-0 d-flex justify-content-center align-items-center">
-                                                <button v-on:click="addArea('contactNumber')" class="btn btn-danger btn-circle btn-sm" style="margin-top: auto; margin-bottom: .3rem;">
+                                                <button v-on:click="addArea('contactNumber')" class="btn btn-danger my-2 btn-circle btn-sm" style="margin-top: auto; margin-bottom: .3rem;">
                                                     <font-awesome-icon icon="plus" size="xs"/>
                                                 </button>
                                             </div>
@@ -54,7 +54,7 @@
                                                 />
                                             </div>
                                             <div class="col-md-2 px-0 d-flex justify-content-center align-items-center">
-                                                <button v-on:click="addArea('emailAddres')" class="btn btn-danger btn-circle btn-sm" style="margin-top: auto; margin-bottom: .3rem;">
+                                                <button v-on:click="addArea('emailAddres')" class="btn btn-danger my-2 btn-circle btn-sm" style="margin-top: auto; margin-bottom: .3rem;">
                                                     <font-awesome-icon icon="plus" size="xs"/>
                                                 </button>
                                             </div>
@@ -71,7 +71,7 @@
                                                 />
                                             </div>
                                             <div class="col-md-2 px-0 d-flex justify-content-center align-items-center">
-                                                <button v-on:click="addArea('addres')" class="btn btn-danger btn-circle btn-sm" style="margin-top: auto; margin-bottom: .3rem;">
+                                                <button v-on:click="addArea('addres')" class="btn btn-danger my-2 btn-circle btn-sm" style="margin-top: auto; margin-bottom: .3rem;">
                                                     <font-awesome-icon icon="plus" size="xs"/>
                                                 </button>
                                             </div>
@@ -84,8 +84,8 @@
                                     <div class="col-md-8">
                                         <div class="row">
                                             <div class="col-md-offset-3 col-md-6">
-                                                <router-link class="btn btn-primary mx-2" @click.native="saveOrEditContact(contact)" to="/">Save</router-link>
-                                                <router-link class="btn btn-outline-secondary mx-2" to="/">Cancel</router-link>
+                                                <router-link class="btn btn-primary m-2" @click.native="saveOrEditContact(contact)" to="/">Save</router-link>
+                                                <router-link class="btn btn-outline-secondary m-2" to="/">Cancel</router-link>
                                             </div>
                                         </div>
                                     </div>

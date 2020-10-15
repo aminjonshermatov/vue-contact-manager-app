@@ -80,7 +80,6 @@ export default {
     methods: {
         ...mapMutations(['deleteContact']),
         removeContact(id) {
-            console.log('+++');
             this.deleteContact(id);
         }
     },

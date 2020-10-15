@@ -6,11 +6,12 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
+            
 
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <router-link class="badge badge-light" :to="{ name: 'Contact', params: { index } }">Add Contact</router-link>
+              <router-link class="btn btn-light" :to="{ name: 'Contact', params: { index } }">Add Contact</router-link>
             </li>
           </ul>
         </div>
@@ -31,3 +32,13 @@ export default {
   }
 }
 </script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+</style>
