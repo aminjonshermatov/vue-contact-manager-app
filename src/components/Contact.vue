@@ -4,7 +4,7 @@
             <div class="row justify-content-md-center">
                 <div class="col-md-9">
                     <div class="card">
-                        <div class="card-header mb-1">
+                        <div class="card-header mb-1 text-center">
                             <strong>{{header}}</strong>
                         </div>
 
@@ -31,7 +31,7 @@
                                             <div class="col-md-7">
                                                 <addNumberInput
                                                     v-for="(number, i) of contact.contactNumber"
-                                                    :key="number"
+                                                    :key="i"
                                                     v-bind:number="number"
                                                     v-model="contact.contactNumber[i]"
                                                 />
@@ -48,7 +48,7 @@
                                             <div class="col-md-7">
                                                 <addEmailInput
                                                     v-for="(email, i) of contact.emailAddres"
-                                                    :key="email"
+                                                    :key="i"
                                                     v-bind:email="email"
                                                     v-model="contact.emailAddres[i]"
                                                 />
@@ -65,7 +65,7 @@
                                             <div class="col-md-7">
                                                 <addAddres
                                                     v-for="(addres, i) of contact.addres"
-                                                    :key="addres"
+                                                    :key="i"
                                                     v-bind:addres="addres"
                                                     v-model="contact.addres[i]"
                                                 />
@@ -132,11 +132,19 @@
             ...mapMutations(['saveContact']),
             ...mapActions(['getById']),
             saveOrEditContact(item) {
-                this.saveContact(item);
+                if (item.name.firstname != '' && item.name.firstname != '') {
+                    item.contactNumber = item.contactNumber.filter(el => el != '');
+                    item.addres = item.addres.filter(el => el != '');
+                    item.emailAddres = item.emailAddres.filter(el => el != '');
+                    this.saveContact(item);
+                } else {
+                    console.log(111);
+                }
+                
             },
             addArea(prop) {
                 this.contact[prop].push("");
-            },
+            }
         },
         mounted() {
             this.getById(this.index);

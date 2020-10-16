@@ -9,14 +9,17 @@
                             <ul class="ml-3 my-2 list-group list-group-flush">
                                 <div class="row">
                                     <div class="col-md-3 px-0">
-                                        <strong><i>Numbers: </i></strong>
+                                        <strong><i>Number: </i></strong>
                                     </div>
-                                    <div class="col-md-9 px-0">
+                                    <div v-if="contact.contactNumber.length" class="col-md-9 px-0">
                                         <Item
                                             v-for="item of contact.contactNumber"
                                             :key="item"
                                             v-bind:item="item"
                                         />
+                                    </div>
+                                    <div v-else class="col-md-9 px-0">
+                                        <i class="text-muted">Contact number is empty</i>
                                     </div>
                                 </div>
                             </ul>
@@ -25,26 +28,32 @@
                                     <div class="col-md-3 px-0">
                                         <strong><i>Email: </i></strong>
                                     </div>
-                                    <div class="col-md-9 px-0">
+                                    <div v-if="contact.emailAddres.length" class="col-md-9 px-0">
                                         <Item
                                             v-for="item of contact.emailAddres"
                                             :key="item"
                                             v-bind:item="item"
                                         />
                                     </div>
+                                    <div v-else class="col-md-9 px-0">
+                                        <i class="text-muted">Email is empty</i>
+                                    </div>
                                 </div>
                             </ul>
                             <ul class="ml-3 my-2 mb-0 list-inline">
                                 <div class="row">
                                     <div class="col-md-3 px-0">
-                                        <strong><i>Addres: </i></strong>
+                                        <strong><i>Address: </i></strong>
                                     </div>
-                                    <div class="col-md-9 px-0">
+                                    <div v-if="contact.addres.length" class="col-md-9 px-0">
                                         <Item
                                             v-for="item of contact.addres"
                                             :key="item"
                                             v-bind:item="item"
                                         />
+                                    </div>
+                                    <div v-else class="col-md-9 px-0">
+                                        <i class="text-muted">Address is empty</i>
                                     </div>
                                 </div>
                             </ul>

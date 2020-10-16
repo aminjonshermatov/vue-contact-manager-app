@@ -44,7 +44,6 @@ export default {
         $(document).ready(function () {
             $("#myInput").on("keyup", function () {
                 const value = $(this).val().toLowerCase();
-                const regex = new RegExp(value, 'i');
                 $("#sampleInput #liSearch").filter(function () {
                     $(this).toggle(
                         $(this).text().split(":")[0].toLocaleLowerCase().includes(value)
